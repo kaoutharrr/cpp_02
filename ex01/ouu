@@ -1,0 +1,6 @@
+rm -rf main.o Fixed.o
+rm -rf ex01
+c++  -Wall -Wextra -Werror  -c -o main.o main.cpp
+rm -rf main.o Fixed.o
+rm -rf ex01
+c++  -Wall -Wextra -Werror  -c -o main.o main.cpp

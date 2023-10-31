@@ -6,11 +6,12 @@
 /*   By: kkouaz <kkouaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 18:20:56 by kkouaz            #+#    #+#             */
-/*   Updated: 2023/10/30 18:41:03 by kkouaz           ###   ########.fr       */
+/*   Updated: 2023/10/31 22:44:22 by kkouaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"Fixed.hpp"
+#include<cmath>
 
 Fixed :: Fixed(void)
 {
@@ -27,13 +28,13 @@ Fixed :: Fixed(const Fixed& F)
 
 Fixed :: Fixed(const int a)
 {
-    (void)a;
+    FixedPoint = a << FractionalBits ;
     std :: cout  << "Int constructor called\n";
 }
 
 Fixed :: Fixed(const float f)
 {
-    (void)f;
+    FixedPoint = roundf(f * (1 << FractionalBits));
     std :: cout << "Float constructor called\n";
 }
 
@@ -58,16 +59,16 @@ void Fixed :: setRawBits( int const raw )
    FixedPoint = raw;
 }
 
-// float Fixed :: toFloat(void) const
-// {
-//     return(1.555);
-// }
+float Fixed :: toFloat(void) const
+{
+    float g = (float)FixedPoint /( 1 <<  FractionalBits);
+    return(g);
+}
 
-// int Fixed :: toInt( void ) const
-// {
-//     return(0);
-// }
-
+int Fixed :: toInt( void ) const
+{
+    return(FixedPoint >> FractionalBits);
+}
 
 Fixed :: ~Fixed(void)
 {

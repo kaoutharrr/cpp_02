@@ -6,7 +6,7 @@
 #    By: kkouaz <kkouaz@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/31 22:48:18 by kkouaz            #+#    #+#              #
-#    Updated: 2023/10/31 22:51:23 by kkouaz           ###   ########.fr        #
+#    Updated: 2023/11/01 15:23:06 by kkouaz           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = ex00
 CC = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
-SRC = 
+SRC = Fixed.cpp main.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all : $(NAME)

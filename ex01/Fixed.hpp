@@ -6,7 +6,7 @@
 /*   By: kkouaz <kkouaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 18:14:23 by kkouaz            #+#    #+#             */
-/*   Updated: 2023/10/31 22:51:56 by kkouaz           ###   ########.fr       */
+/*   Updated: 2023/11/03 00:03:58 by kkouaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 class Fixed 
 {
     private :
-        int FixedPoint;
+        int fixedPoint;
         static const int FractionalBits = 8;
     public :
         Fixed(void);

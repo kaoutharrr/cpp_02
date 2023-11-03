@@ -6,7 +6,7 @@
 /*   By: kkouaz <kkouaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 22:52:15 by kkouaz            #+#    #+#             */
-/*   Updated: 2023/11/02 05:05:54 by kkouaz           ###   ########.fr       */
+/*   Updated: 2023/11/03 01:24:16 by kkouaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,29 +15,29 @@
 
 Fixed :: Fixed(void)
 {
-    FixedPoint = 0;
+    fixedPoint = 0;
     std :: cout << "Default constructor called \n";
 }
 
 Fixed :: Fixed(const Fixed& F)
 {
-    FixedPoint = F.FixedPoint;
     std :: cout << "copy constructor called \n";
+    *this = F;
 }
 
 
 Fixed :: Fixed(const int a)
 {
-    FixedPoint = a << FractionalBits ;
+    fixedPoint = a << FractionalBits ;
     std :: cout  << "Int constructor called\n";
-    std :: cout << FixedPoint; 
+    std :: cout << fixedPoint; 
 }
 
 Fixed :: Fixed(const float f)
 {
    
-    FixedPoint = roundf(f * (1 << FractionalBits));
-     std :: cout << FixedPoint; 
+    fixedPoint = roundf(f * (1 << FractionalBits));
+     std :: cout << fixedPoint; 
     std :: cout << "Float constructor called\n";
 }
 
@@ -47,60 +47,60 @@ Fixed& Fixed :: operator=(const Fixed& other)
     std :: cout << "Copy assignment operator called \n";
     if(this == &other)
         return(*this);
-    FixedPoint = other.FixedPoint;
+    fixedPoint = other.getRawBits();
     return(*this);
 }
 
 int Fixed :: getRawBits( void )const
 {
     std :: cout << "getRawBits member function called \n";
-    return(FixedPoint);
+    return(fixedPoint);
 }
 
 void Fixed :: setRawBits( int const raw )
 {
     std :: cout << "setRawBits member function called \n";
-   FixedPoint = raw;
+   fixedPoint = raw;
 }
 
 float Fixed :: toFloat(void) const
 {
-    float g = (float)FixedPoint /( 1 <<  FractionalBits);
+    float g = (float)fixedPoint /( 1 <<  FractionalBits);
     return(g);
 }
 
 int Fixed :: toInt( void ) const
 {
-    return(FixedPoint >> FractionalBits);
+    return(fixedPoint >> FractionalBits);
 }
 
 bool Fixed :: operator<(const Fixed& b) const
 {
-        return (this->FixedPoint < b.FixedPoint);
+        return (this->fixedPoint < b.fixedPoint);
 }
 
 bool Fixed :: operator>(const Fixed& b) const
 {
-    return (this->FixedPoint > b.FixedPoint);
+    return (this->fixedPoint > b.fixedPoint);
 }
 
 bool Fixed :: operator<=(const Fixed& b) const
 {
-    return (this->FixedPoint <= b.FixedPoint);
+    return (this->fixedPoint <= b.fixedPoint);
 }
 bool Fixed :: operator>=(const Fixed& b) const
 {
-    return (this->FixedPoint >= b.FixedPoint);
+    return (this->fixedPoint >= b.fixedPoint);
 }
 
 bool Fixed :: operator==(const Fixed& b) const
 {
-    return (this->FixedPoint == b.FixedPoint);
+    return (this->fixedPoint == b.fixedPoint);
 }
 
 bool Fixed :: operator!=(const Fixed& b) const
 {
-    return (this->FixedPoint != b.FixedPoint);
+    return (this->fixedPoint != b.fixedPoint);
 }
 
 
@@ -108,14 +108,14 @@ bool Fixed :: operator!=(const Fixed& b) const
 Fixed  Fixed :: operator+(const Fixed& b) const
 {
     Fixed neww;
-    int sum = this->FixedPoint + b.FixedPoint;
+    int sum = this->fixedPoint + b.fixedPoint;
     neww.setRawBits(sum);
     return(neww);
 }
 Fixed  Fixed :: operator-(const Fixed& b) const
 {
     Fixed neww;
-    int sum = this->FixedPoint - b.FixedPoint;
+    int sum = this->fixedPoint - b.fixedPoint;
     neww.setRawBits(sum);
     return(neww);
 }
@@ -123,7 +123,7 @@ Fixed  Fixed :: operator-(const Fixed& b) const
 Fixed  Fixed :: operator*(const Fixed& b) const
 {
     Fixed neww;
-    int sum = (FixedPoint * b.FixedPoint) >> 8;
+    int sum = (fixedPoint * b.fixedPoint) >> 8;
     neww.setRawBits(sum);
     return(neww);
 }
@@ -131,7 +131,7 @@ Fixed  Fixed :: operator*(const Fixed& b) const
 Fixed  Fixed :: operator/(const Fixed& b) const
 {
     Fixed neww;
-    int sum = (this->FixedPoint / b.FixedPoint) << 8;
+    int sum = (this->fixedPoint / b.fixedPoint) << 8;
     neww.setRawBits(sum);
     return(neww);
 }
@@ -140,13 +140,13 @@ Fixed  Fixed :: operator/(const Fixed& b) const
 
 Fixed& Fixed :: operator++()
 {
-    this->FixedPoint+=1;
+    this->fixedPoint+=1;
     return(*this);
 }
 
 Fixed& Fixed :: operator--()
 {
-    this->setRawBits(this->FixedPoint - 1);
+    this->setRawBits(this->fixedPoint - 1);
     return(*this);
 }
 
@@ -155,7 +155,7 @@ Fixed Fixed :: operator++(int nb)
 {
     nb = 1;
     Fixed copy = *this;
-    this->FixedPoint+=nb;
+    this->fixedPoint+=nb;
     return(copy);
 }
 
@@ -163,7 +163,7 @@ Fixed Fixed :: operator--(int nb)
 {
     nb = 1;
     Fixed copy = *this;
-    this->FixedPoint-=nb;
+    this->fixedPoint-=nb;
     return(copy);
 }
 

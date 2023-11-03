@@ -6,7 +6,7 @@
 /*   By: kkouaz <kkouaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 22:54:43 by kkouaz            #+#    #+#             */
-/*   Updated: 2023/11/02 19:39:16 by kkouaz           ###   ########.fr       */
+/*   Updated: 2023/11/03 05:53:38 by kkouaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ std::ostream& operator<<(std::ostream& os, const Fixed& fixed) {
 int main( void )
 {
     Fixed a;
-    Fixed const b( Fixed(7.25f ) * Fixed( 1.75f ) );
+    Fixed const b( Fixed(5.05f ) * Fixed( 2 ) );
     std::cout << a << std::endl;
     std::cout << ++a << std::endl;
    std::cout << a << std::endl;
@@ -28,6 +28,5 @@ int main( void )
     std::cout << a << std::endl;
     std::cout << b << std::endl;
     std::cout << Fixed::max( a, b ) << std::endl;
-    std::cout << Fixed::min( a, b ) << std::endl;
     return 0;
 }

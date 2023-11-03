@@ -6,7 +6,7 @@
 /*   By: kkouaz <kkouaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 22:52:15 by kkouaz            #+#    #+#             */
-/*   Updated: 2023/11/03 01:24:16 by kkouaz           ###   ########.fr       */
+/*   Updated: 2023/11/03 07:31:13 by kkouaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,15 @@ Fixed :: Fixed(const int a)
 {
     fixedPoint = a << FractionalBits ;
     std :: cout  << "Int constructor called\n";
-    std :: cout << fixedPoint; 
 }
 
 Fixed :: Fixed(const float f)
 {
    
     fixedPoint = roundf(f * (1 << FractionalBits));
-     std :: cout << fixedPoint; 
     std :: cout << "Float constructor called\n";
 }
 
-//comapring
 Fixed& Fixed :: operator=(const Fixed& other)
 {
     std :: cout << "Copy assignment operator called \n";
@@ -74,6 +71,7 @@ int Fixed :: toInt( void ) const
     return(fixedPoint >> FractionalBits);
 }
 
+//comapring
 bool Fixed :: operator<(const Fixed& b) const
 {
         return (this->fixedPoint < b.fixedPoint);
@@ -102,7 +100,6 @@ bool Fixed :: operator!=(const Fixed& b) const
 {
     return (this->fixedPoint != b.fixedPoint);
 }
-
 
 //arithmetics 
 Fixed  Fixed :: operator+(const Fixed& b) const
